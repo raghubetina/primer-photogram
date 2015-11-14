@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20151114154110) do
   create_table "comments", force: :cascade do |t|
     t.integer  "photo_id"
     t.text     "body"
-    t.integer  "commenter_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20151114154110) do
   create_table "photos", force: :cascade do |t|
     t.text     "caption"
     t.string   "image"
-    t.integer  "owner_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
