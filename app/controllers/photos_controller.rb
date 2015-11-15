@@ -1,4 +1,8 @@
 class PhotosController < ApplicationController
+  def my_likes
+    @photos = current_user.liked_photos
+  end
+
   def index
     @photos = Photo.order("created_at DESC")
   end
@@ -36,7 +40,7 @@ class PhotosController < ApplicationController
     @photo.user_id = params[:user_id]
 
     if @photo.save
-      redirect_to "/photos", :notice => "Photo updated successfully."
+      redirect_to "/photos/#{@photo.id}", :notice => "Photo updated successfully."
     else
       render 'edit'
     end

@@ -115,9 +115,11 @@
 
 1. On the new photo form, the user should not have to provide their ID number. Fix it using Devise's `current_user` helper method.
 
-1. Create an RCAV: When I visit [http://localhost:3000/my_photos](http://localhost:3000/my_photos), I should see only my own photos. Don't worry about styling for now, just get the right data to show up. Add a link to the navbar.
+1. Create an RCAV: When I visit [http://localhost:3000/users](http://localhost:3000/users), I should see an index of all users. Add a link to the navbar.
 
-1. Create an RCAV: When I visit [http://localhost:3000/my_likes](http://localhost:3000/my_likes), I should see only the photos that I have liked. Don't worry about styling for now, just get the right data to show up. Add a link to the navbar.
+1. Create an RCAV: When I visit [http://localhost:3000/users/1](http://localhost:3000/users/1), I should see the details of user #1 along with all of his or her photos.
+
+1. Create an RCAV: When I visit [http://localhost:3000/my_likes](http://localhost:3000/my_likes), I should see only the photos that I have liked.  Add a link to the navbar.
 
 1. On the photo show page, I should only see the "Edit" and "Back" buttons if it is my own photo.
 
@@ -128,7 +130,11 @@
    View Source on the target if you need to.
 
 1. Make the form to add a comment work.
-2. Make the heart to like/unlike work.
+1. Make the heart to like/unlike work.
+1. Customize Devise form
+
+1. Optional: Carrierwave
+1. Optional: Social Network
 
 tests:
  - index shows photos, comments, likes, oxford comma, time ago in words

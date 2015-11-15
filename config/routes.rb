@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+  devise_for :users
+  root "photos#index"
+
+  get "/my_likes", :controller => "photos", :action => "my_likes"
+
+  # Routes for the User resource:
+  # READ
+  get "/users", :controller => "users", :action => "index"
+  get "/users/:id", :controller => "users", :action => "show"
+
   # Routes for the Like resource:
   # CREATE
   get "/likes/new", :controller => "likes", :action => "new"
@@ -49,7 +60,4 @@ Rails.application.routes.draw do
   # DELETE
   get "/delete_photo/:id", :controller => "photos", :action => "destroy"
   #------------------------------
-
-  devise_for :users
-  root "photos#index"
 end
