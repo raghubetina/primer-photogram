@@ -31,15 +31,6 @@
             <input id="caption" name="caption" placeholder="Add a caption..." class="form-control" value="<%= @photo.caption %>">
           </div>
 
-          <!-- Label and input for image -->
-          <div class="form-group">
-            <label for="image" class="control-label">
-              Image
-            </label>
-
-            <input type="text" id="image" name="image" placeholder="Add a URL..." class="form-control" value="<%= @photo.image %>">
-          </div>
-
           <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
 
           <div class="form-group">

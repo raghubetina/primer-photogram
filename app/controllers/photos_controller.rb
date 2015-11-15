@@ -40,7 +40,6 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
 
     @photo.caption = params[:caption]
-    @photo.image = params[:image]
     @photo.user_id = params[:user_id]
 
     if @photo.save
