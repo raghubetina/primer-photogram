@@ -3,7 +3,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
-          <%= link_to photo.user.username %>
+          <%= link_to photo.user.username, "/users/#{photo.user.id}" %>
           <small>
             <%= time_ago_in_words(photo.created_at) %> ago
           </small>
@@ -54,7 +54,7 @@
           <li class="media">
             <div class="media-body">
               <h6 class="media-heading">
-                <%= link_to photo.user.username %>
+                <%= link_to photo.user.username, "/users/#{photo.user.id}" %>
                 <small>
                   <%= time_ago_in_words(photo.created_at) %> ago
                 </small>
@@ -68,7 +68,7 @@
           <li class="media">
             <div class="media-body">
               <h6 class="media-heading">
-                <%= link_to comment.user.username %>
+                <%= link_to comment.user.username, "/users/#{comment.user.id}" %>
                 <small>
                   <%= time_ago_in_words(comment.created_at) %> ago
                 </small>
