@@ -113,13 +113,19 @@
      - The link to sign out should work as is, but remove the word "dummy".
  - If not, display links to sign-in (`/users/sign_in`) and sign-up (`/users/sign_up`) instead.
 
-1. On the new photo form, the user should not have to provide
+1. On the new photo form, the user should not have to provide their ID number. Fix it using Devise's `current_user` helper method.
+
+1. Create an RCAV: When I visit [http://localhost:3000/my_photos](http://localhost:3000/my_photos), I should see only my own photos. Don't worry about styling for now, just get the right data to show up. Add a link to the navbar.
+
+1. Create an RCAV: When I visit [http://localhost:3000/my_likes](http://localhost:3000/my_likes), I should see only the photos that I have liked. Don't worry about styling for now, just get the right data to show up. Add a link to the navbar.
+
+1. On the photo show page, I should only see the "Edit" and "Back" buttons if it is my own photo.
 
 1. Make the photos index page look like [the target](https://photogram-auth-target.herokuapp.com/photos):
   - Useful Bootstrap things: [panel with heading](http://getbootstrap.com/components/#panels-heading), [media list](http://getbootstrap.com/components/#media-list), [img-responsive](http://getbootstrap.com/css/#images-responsive)
   - Userful Rails methods: [time_ago_in_words](http://apidock.com/rails/ActionView/Helpers/DateHelper/time_ago_in_words), [.pluck](http://guides.rubyonrails.org/active_record_querying.html#pluck), [.to_sentence](http://apidock.com/rails/Array/to_sentence)
 
-   Don't get hung up on this styling part; View Source on the target if you need to.
+   View Source on the target if you need to.
 
 1. Make the form to add a comment work.
 2. Make the heart to like/unlike work.
