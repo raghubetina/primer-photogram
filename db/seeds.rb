@@ -1,4 +1,4 @@
-usernames = ["alice", "bob", "carol"]
+usernames = ["alice", "bob", "carol", "dave", "ellen"]
 
 usernames.each do |username|
   user = User.create
@@ -43,8 +43,18 @@ photo_info = [
 
 users = User.all
 
-users.each do |user|
-  user.photos.create photo_info
+User.all.each do |user|
+  photo_info.each do |photo_hash|
+    filename = photo_hash[:image].split('/').last
+
+    photo = Photo.new
+    photo.image = File.open(Rails.root.join('lib', 'assets', filename).to_s)
+    photo.caption = photo_hash[:caption]
+    photo.user_id = user.id
+    photo.save
+
+    puts photo.errors.full_messages
+  end
 end
 
 puts "There are now #{Photo.count} photos in the database."
@@ -71,3 +81,11 @@ photos.each do |photo|
 end
 
 puts "There are now #{Like.count} likes in the database."
+
+User.all.each do |receiver|
+  users.sample(rand(users.count)).each do |sender|
+    FriendRequest.create sender: sender, receiver: receiver
+  end
+end
+
+puts "There are now #{FriendRequest.count} friend requests in the database."

@@ -3,8 +3,12 @@ class PhotosController < ApplicationController
     @photos = current_user.liked_photos
   end
 
+  def my_timeline
+    @photos = current_user.timeline_photos
+  end
+
   def index
-    @photos = Photo.order("created_at DESC")
+    @photos = Photo.all
   end
 
   def show
