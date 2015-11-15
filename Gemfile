@@ -6,7 +6,7 @@ gem 'devise'
 gem 'faker'
 
 gem 'carrierwave'
-gem "fog-aws"
+gem "fog"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
