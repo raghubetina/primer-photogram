@@ -5,6 +5,7 @@ class Photo < ActiveRecord::Base
   has_many :fans, :through => :likes, :source => :user
 
   validates :user, :presence => true
+  validates :image, :presence => true
 
   mount_uploader :image, ImageUploader
 
