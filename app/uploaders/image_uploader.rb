@@ -31,6 +31,17 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+  def right_orientation
+    if %w(jpg jpeg gif png svg bmp).include?(file.extension.downcase)
+      manipulate! do |img|
+        img.auto_orient
+        img
+      end
+    end
+  end
+
+  process :right_orientation
+
   # Create different versions of your uploaded files:
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
