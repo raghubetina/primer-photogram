@@ -43,6 +43,8 @@
               <%= photo.fans.pluck(:username).to_sentence %>
               <%= photo.fans.many? ? "like" : "likes" %>
               this
+              <% else %>
+              <small class="text-muted">be the first to like this</small>
               <% end %>
             </form>
           <% end %>
