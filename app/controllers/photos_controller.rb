@@ -1,14 +1,14 @@
 class PhotosController < ApplicationController
   def my_likes
-    @photos = current_user.liked_photos
+    @photos = current_user.liked_photos.order(:created_at => :desc)
   end
 
   def my_timeline
-    @photos = current_user.timeline_photos
+    @photos = current_user.timeline_photos.order(:created_at => :desc)
   end
 
   def index
-    @photos = Photo.all
+    @photos = Photo.order(:created_at => :desc)
   end
 
   def show

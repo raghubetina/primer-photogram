@@ -62,4 +62,4 @@
 </div>
 <% end %>
 
-<%= render @user.photos %>
+<%= render @user.photos.sort { |a, b| b.likes.count <=> a.likes.count } %>

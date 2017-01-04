@@ -1,3 +1,9 @@
+User.destroy_all
+Photo.destroy_all
+Comment.destroy_all
+Like.destroy_all
+FriendRequest.destroy_all
+
 usernames = ["alice", "bob", "carol", "dave", "ellen"]
 
 usernames.each do |username|
@@ -14,6 +20,10 @@ photo_info = [
   {
     :image => "astronaut.jpg",
     :caption => "Astronaut"
+  },
+  {
+    :image => "aurora.jpg",
+    :caption => "Aurora"
   },
   {
     :image => "birds.jpg",
@@ -36,12 +46,20 @@ photo_info = [
     :caption => "Lake"
   },
   {
+    :image => "lightbulb.jpg",
+    :caption => "Lightbulb"
+  },
+  {
     :image => "penguins.jpg",
     :caption => "Penguins"
   },
   {
     :image => "pluto.jpg",
     :caption => "Pluto"
+  },
+  {
+    :image => "squirrel.jpg",
+    :caption => "Squirel"
   },
   {
     :image => "stained_glass.jpg",
@@ -56,6 +74,10 @@ photo_info = [
     :caption => "Telescope"
   },
   {
+    :image => "tower.jpg",
+    :caption => "Tower"
+  },
+  {
     :image => "turtles.jpg",
     :caption => "Turtles"
   }
@@ -63,16 +85,15 @@ photo_info = [
 
 users = User.all
 
-users.each do |user|
-  photo_info.each do |photo_hash|
-    filename = photo_hash[:image]
+photo_info.each do |photo_hash|
+  filename = photo_hash[:image]
 
-    photo = Photo.new
-    photo.image = File.open(Rails.root.join('lib', 'assets', filename).to_s)
-    photo.caption = photo_hash[:caption]
-    photo.user_id = user.id
-    photo.save
-  end
+  photo = Photo.new
+  photo.image = File.open(Rails.root.join('lib', 'assets', filename).to_s)
+  photo.caption = photo_hash[:caption]
+  photo.user = users.sample
+  photo.created_at = rand(2.years.ago..Time.now)
+  photo.save
 end
 
 puts "There are now #{Photo.count} photos in the database."
