@@ -1,3 +1,5 @@
+ruby '2.3.3'
+
 source 'http://rubygems.org'
 
 gem 'starter_generators', :git => "http://github.com/rbetina/starter_generators.git"
@@ -54,4 +56,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

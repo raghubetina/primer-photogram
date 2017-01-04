@@ -12,48 +12,66 @@ puts "There are now #{User.count} users in the database."
 
 photo_info = [
   {
-    :image => "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Lake_Bondhus_Norway_2862.jpg/1280px-Lake_Bondhus_Norway_2862.jpg",
-    :caption => "Lake Bondhus"
+    :image => "astronaut.jpg",
+    :caption => "Astronaut"
   },
   {
-    :image => "http://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Lanzarote_5_Luc_Viatour.jpg/1280px-Lanzarote_5_Luc_Viatour.jpg",
-    :caption => "Cueva de los Verdes"
+    :image => "birds.jpg",
+    :caption => "Birds"
   },
   {
-    :image => "http://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Fire_breathing_2_Luc_Viatour.jpg/1280px-Fire_breathing_2_Luc_Viatour.jpg",
-    :caption => "Jaipur"
+    :image => "bridge.jpg",
+    :caption => "Bridge"
   },
   {
-    :image => "http://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Ніжний_ранковий_світло.jpg/1280px-Ніжний_ранковий_світло.jpg",
-    :caption => "Sviati Hory"
+    :image => "firebreather.jpg",
+    :caption => "Firebreather"
   },
   {
-    :image => "http://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Mostar_Old_Town_Panorama_2007.jpg/1280px-Mostar_Old_Town_Panorama_2007.jpg",
-    :caption => "Mostar"
+    :image => "horses.jpg",
+    :caption => "Horses"
   },
   {
-    :image => "http://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Elakala_Waterfalls_Swirling_Pool_Mossy_Rocks.jpg/1280px-Elakala_Waterfalls_Swirling_Pool_Mossy_Rocks.jpg",
-    :caption => "Elakala"
+    :image => "lake.jpg",
+    :caption => "Lake"
   },
   {
-    :image => "http://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Biandintz_eta_zaldiak_-_modified2.jpg/1280px-Biandintz_eta_zaldiak_-_modified2.jpg",
-    :caption => "Biandintz"
+    :image => "penguins.jpg",
+    :caption => "Penguins"
+  },
+  {
+    :image => "pluto.jpg",
+    :caption => "Pluto"
+  },
+  {
+    :image => "stained_glass.jpg",
+    :caption => "Stained glass"
+  },
+  {
+    :image => "sun.jpg",
+    :caption => "Sun"
+  },
+  {
+    :image => "telescope.jpg",
+    :caption => "Telescope"
+  },
+  {
+    :image => "turtles.jpg",
+    :caption => "Turtles"
   }
 ]
 
 users = User.all
 
-User.all.each do |user|
+users.each do |user|
   photo_info.each do |photo_hash|
-    filename = photo_hash[:image].split('/').last
+    filename = photo_hash[:image]
 
     photo = Photo.new
     photo.image = File.open(Rails.root.join('lib', 'assets', filename).to_s)
     photo.caption = photo_hash[:caption]
     photo.user_id = user.id
     photo.save
-
-    puts photo.errors.full_messages
   end
 end
 
@@ -82,7 +100,7 @@ end
 
 puts "There are now #{Like.count} likes in the database."
 
-User.all.each do |receiver|
+users.each do |receiver|
   users.sample(rand(users.count)).each do |sender|
     FriendRequest.create sender: sender, receiver: receiver
   end
