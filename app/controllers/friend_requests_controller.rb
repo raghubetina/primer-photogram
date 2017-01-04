@@ -1,6 +1,11 @@
 class FriendRequestsController < ApplicationController
   def index
     @friend_requests = FriendRequest.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @friend_requests.to_csv, filename: "friend_requests.csv" }
+    end
   end
 
   def show

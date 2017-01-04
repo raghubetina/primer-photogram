@@ -9,6 +9,11 @@ class PhotosController < ApplicationController
 
   def index
     @photos = Photo.order(:created_at => :desc)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @photos.to_csv, filename: "photos.csv" }
+    end
   end
 
   def show

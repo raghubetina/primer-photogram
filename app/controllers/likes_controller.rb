@@ -1,6 +1,11 @@
 class LikesController < ApplicationController
   def index
     @likes = Like.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @likes.to_csv, filename: "likes.csv" }
+    end
   end
 
   def show

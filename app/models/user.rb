@@ -1,3 +1,5 @@
+require "csv"
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -18,4 +20,16 @@ class User < ActiveRecord::Base
   has_many :timeline_photos, :through => :friends_where_sender, :source => :photos
 
   validates :username, :presence => true, :uniqueness => true
+
+  def self.to_csv
+    attributes = %w{id username email}
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |user|
+        csv << attributes.map{ |attr| user.send(attr) }
+      end
+    end
+  end
 end
