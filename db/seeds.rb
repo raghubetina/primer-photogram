@@ -1,9 +1,27 @@
-User.create!([
-  {email: "alice@example.com", encrypted_password: "$2a$10$lm9FMeGbn8rBbEHB7JX8d.jIYdLrf2NQNARsw2zD1bQFoBOeRPwYq", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 4, current_sign_in_at: "2017-03-28 13:13:13", last_sign_in_at: "2017-01-31 23:04:11", current_sign_in_ip: "::1", last_sign_in_ip: "::1", username: "alice"},
-  {email: "bob@example.com", encrypted_password: "$2a$10$2CcIse472fTfkaLFjxiCBebhGAk8fPqG.ZdnCS4xjwY5nPr6O2/yG", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, username: "bob"},
-  {email: "carol@example.com", encrypted_password: "$2a$10$CrV9M.d3ZXcXtPKqt4UR4ef7BoMsuWVNVSV3GXrwCDV4.lN9BIFP.", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, username: "carol"},
-  {email: "dave@example.com", encrypted_password: "$2a$10$Yk5pdCMmDdsdBoU.FRF8GeEN0LZs5S5VG30csTt4DoHJ8qH.OurEC", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2017-01-04 18:50:41", last_sign_in_at: "2017-01-04 18:50:41", current_sign_in_ip: "::1", last_sign_in_ip: "::1", username: "dave"},
-  {email: "ellen@example.com", encrypted_password: "$2a$10$fnudPElEmdAqsa6xWrY/luDx1Y/dVgY3uVTDAtUlepaPrqWxTz83W", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, username: "ellen"}
+User.create([
+  {id: 41, email: "alice@example.com", password: "password", username: "alice"},
+  {id: 42, email: "bob@example.com", password: "password", username: "bob"},
+  {id: 43, email: "carol@example.com", password: "password", username: "carol"},
+  {id: 44, email: "dave@example.com", password: "password", username: "dave"},
+  {id: 45, email: "ellen@example.com", password: "password", username: "ellen"},
+])
+Photo.create!([
+  {id: 221, caption: "Astronaut", image: File.open(Rails.root.join("lib", "assets", "astronaut.jpg")), user_id: 44},
+  {id: 222, caption: "Aurora", image: File.open(Rails.root.join("lib", "assets", "aurora.jpg")), user_id: 41},
+  {id: 223, caption: "Birds", image: File.open(Rails.root.join("lib", "assets", "birds.jpg")), user_id: 44},
+  {id: 224, caption: "Bridge", image: File.open(Rails.root.join("lib", "assets", "bridge.jpg")), user_id: 42},
+  {id: 225, caption: "Firebreather", image: File.open(Rails.root.join("lib", "assets", "firebreather.jpg")), user_id: 43},
+  {id: 226, caption: "Horses", image: File.open(Rails.root.join("lib", "assets", "horses.jpg")), user_id: 45},
+  {id: 227, caption: "Lake", image: File.open(Rails.root.join("lib", "assets", "lake.jpg")), user_id: 44},
+  {id: 228, caption: "Lightbulb", image: File.open(Rails.root.join("lib", "assets", "lightbulb.jpg")), user_id: 42},
+  {id: 229, caption: "Penguins", image: File.open(Rails.root.join("lib", "assets", "penguins.jpg")), user_id: 44},
+  {id: 230, caption: "Pluto", image: File.open(Rails.root.join("lib", "assets", "pluto.jpg")), user_id: 42},
+  {id: 231, caption: "Squirel", image: File.open(Rails.root.join("lib", "assets", "squirrel.jpg")), user_id: 41},
+  {id: 232, caption: "Stained glass", image: File.open(Rails.root.join("lib", "assets", "stained_glass.jpg")), user_id: 42},
+  {id: 233, caption: "Sun", image: File.open(Rails.root.join("lib", "assets", "sun.jpg")), user_id: 43},
+  {id: 234, caption: "Telescope", image: File.open(Rails.root.join("lib", "assets", "telescope.jpg")), user_id: 45},
+  {id: 235, caption: "Tower", image: File.open(Rails.root.join("lib", "assets", "tower.jpg")), user_id: 42},
+  {id: 236, caption: "Turtles", image: File.open(Rails.root.join("lib", "assets", "turtles.jpg")), user_id: 45}
 ])
 Comment.create!([
   {photo_id: 224, body: "We need to hack the auxiliary RSS program!", user_id: 43},
@@ -84,22 +102,4 @@ Like.create!([
   {user_id: 41, photo_id: 223},
   {user_id: 44, photo_id: 232},
   {user_id: 41, photo_id: 235}
-])
-Photo.create!([
-  {caption: "Astronaut", image: "astronaut.jpg", user_id: 44},
-  {caption: "Aurora", image: "aurora.jpg", user_id: 41},
-  {caption: "Birds", image: "birds.jpg", user_id: 44},
-  {caption: "Bridge", image: "bridge.jpg", user_id: 42},
-  {caption: "Firebreather", image: "firebreather.jpg", user_id: 43},
-  {caption: "Horses", image: "horses.jpg", user_id: 45},
-  {caption: "Lake", image: "lake.jpg", user_id: 44},
-  {caption: "Lightbulb", image: "lightbulb.jpg", user_id: 42},
-  {caption: "Penguins", image: "penguins.jpg", user_id: 44},
-  {caption: "Pluto", image: "pluto.jpg", user_id: 42},
-  {caption: "Squirel", image: "squirrel.jpg", user_id: 41},
-  {caption: "Stained glass", image: "stained_glass.jpg", user_id: 42},
-  {caption: "Sun", image: "sun.jpg", user_id: 43},
-  {caption: "Telescope", image: "telescope.jpg", user_id: 45},
-  {caption: "Tower", image: "tower.jpg", user_id: 42},
-  {caption: "Turtles", image: "turtles.jpg", user_id: 45}
 ])
